@@ -1,16 +1,15 @@
-# untitled
+## Coindump
+A Flutter app that retrieves the name, symbol and price from [CoinCap API 2.0](https://docs.coincap.io/#89deffa0-ab03-4e0a-8d92-637a857d2c91) and displays them in a list view.
 
-A new Flutter project.
+# Dependencies
+- web_socket_channel
+- http
 
-## Getting Started
+# Screenshot
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+![Result](https://user-images.githubusercontent.com/58082611/156421017-8d862e67-813f-4156-9182-6d06538588eb.mp4)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
