@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_socket_channel/web_socket_channel.dart';
 
-// const apiKey = '261358da-e2b4-477f-853f-8fa04876370c';
+
 WebSocketChannel? channel;
 class CryptoPage extends StatefulWidget {
     CryptoPage({ Key? key }) : super(key: key);
@@ -13,26 +13,6 @@ class CryptoPage extends StatefulWidget {
 }
 
 class _CryptoPageState extends State<CryptoPage> {
-// List<AssetModel> list = [];
-
-//  getAssets() async{
-//     final url = Uri.parse('https://api.coincap.io/v2/assets');
-//     final response = await http.get(url);
-//     if(response.statusCode == 200){
-//       final jsonAsset = convert.jsonDecode(response.body);
-//       final cryptoAssets = jsonAsset['data'];
-//       setState(() {
-//         // list = cryptoAssets.map<AssetModel>((json) => AssetModel.fromJson(json)).toList();
-//       }); 
-//       print(cryptoAssets);
-//       // var aset = AssetModel.fromJson(cryptoAssets.toString());
-//       // return AssetModel.fromJson(list);
-//       return Text(cryptoAssets);
-    
-//     } else{
-//       throw Exception('Failed to load assets');
-//     } 
-//   }
 
    Future<List<dynamic>> getAssets() async {
       final url = Uri.parse('https://api.coincap.io/v2/assets');
@@ -40,8 +20,7 @@ class _CryptoPageState extends State<CryptoPage> {
       if(response.statusCode == 200){
         final  json = convert.jsonDecode(response.body);
         final List<dynamic> cryptoAssets = json['data'];
-        // print(cryptoAssets);
-        
+               
         listenToCryptoAssets(cryptoAssets);
         return cryptoAssets;
       } else {
@@ -49,7 +28,6 @@ class _CryptoPageState extends State<CryptoPage> {
       }
 
     }
-
     
   void listenToCryptoAssets(List cryptoAssets) {
      channel = WebSocketChannel.connect(Uri.parse(
@@ -65,7 +43,6 @@ class _CryptoPageState extends State<CryptoPage> {
 
   @override
   Widget build(BuildContext context) {
-    // getAssets();
    return Scaffold(
      appBar: AppBar(
        title: const Text('CoinDump'),
@@ -80,7 +57,6 @@ class _CryptoPageState extends State<CryptoPage> {
              builder: (context, streamSnapshot) {
                Map? streamData;
                if(streamSnapshot.hasData){
-                //  print(streamSnapshot.data);
                  streamData = convert.jsonDecode(streamSnapshot.data as String) 
                  as Map;
                }
@@ -118,7 +94,6 @@ class _CryptoPageState extends State<CryptoPage> {
             return const Center(child:  CircularProgressIndicator());
 
           }
-        
 
       }
       
@@ -128,9 +103,3 @@ class _CryptoPageState extends State<CryptoPage> {
 
 }
 
-//ID
-//RANK
-// SYMBOL
-//NAME
-//PRICEUSD
-//CHANGEPERCENT24HR
